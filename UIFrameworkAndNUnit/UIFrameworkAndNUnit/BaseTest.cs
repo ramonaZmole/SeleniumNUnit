@@ -16,7 +16,11 @@ namespace UIFrameworkAndNUnit
         public virtual void After()
         {
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
-                ScreenShot.TakeAndAttachScreenShot(TestContext.CurrentContext.Test.MethodName);
+            {
+                var imagePath = ScreenShot.GetScreenShotPath(TestContext.CurrentContext.Test.MethodName);
+                TestContext.AddTestAttachment(imagePath);
+            }
+
             Browser.Cleanup();
         }
     }

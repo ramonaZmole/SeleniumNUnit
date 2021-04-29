@@ -9,8 +9,8 @@
   <ItemGroup>
     <PackageReference Include="Faker.Net" Version="1.5.136" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
-    <PackageReference Include="NsTestFrameworkApi" Version="1.21.428.3" />
-    <PackageReference Include="NsTestFrameworkUI" Version="1.21.428.8" />
+    <PackageReference Include="NsTestFrameworkApi" Version="1.21.429.1" />
+    <PackageReference Include="NsTestFrameworkUI" Version="1.21.429.3" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
