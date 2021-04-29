@@ -9,7 +9,7 @@ namespace UIFrameworkAndNUnit
         [SetUp]
         public virtual void Before()
         {
-            Browser.InitializeDriver();
+            Browser.InitializeDriver(true);
         }
 
         [TearDown]
