@@ -26,7 +26,7 @@ namespace UIFrameworkAndNUnit
         {
 
             Browser.GoTo("https://nunit.org/");
-            Browser.WebDriver.Url.Should().Be("https://nunit.org/234");
+            Browser.WebDriver.Url.Should().Be("https://nunit.org/");
             //  Assert.That(Browser.WebDriver.Url, Is.EqualTo("https://nunit.org/234"));
         }
 
