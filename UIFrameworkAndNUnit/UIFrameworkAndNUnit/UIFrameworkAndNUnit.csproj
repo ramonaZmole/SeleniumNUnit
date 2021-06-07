@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Faker.Net" Version="1.5.136" />
+    <PackageReference Include="Faker.Net" Version="1.5.138" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
-    <PackageReference Include="NsTestFrameworkApi" Version="1.21.429.1" />
-    <PackageReference Include="NsTestFrameworkUI" Version="1.21.429.3" />
+    <PackageReference Include="NsTestFrameworkApi" Version="1.21.607.1" />
+    <PackageReference Include="NsTestFrameworkUI" Version="1.21.607.2" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
   </ItemGroup>
 
   <ItemGroup>

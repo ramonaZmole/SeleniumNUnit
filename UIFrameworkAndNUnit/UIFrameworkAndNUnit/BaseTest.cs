@@ -9,7 +9,7 @@ namespace UIFrameworkAndNUnit
         [SetUp]
         public virtual void Before()
         {
-            Browser.InitializeDriver(true);
+            Browser.InitializeDriver(new DriverOptions { IsHeadless = true });
         }
 
         [TearDown]
