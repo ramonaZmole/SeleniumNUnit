@@ -2,6 +2,9 @@
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 
+
+[assembly: Parallelizable(ParallelScope.All)]
+[assembly: LevelOfParallelism(4)]
 namespace UIFrameworkAndNUnit
 {
     public class BaseTest
