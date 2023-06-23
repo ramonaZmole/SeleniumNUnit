@@ -2,7 +2,9 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/UIFrameworkAndNUnit/UIFrameworkAndNUnit/obj
-/UIFrameworkAndNUnit/UIFrameworkAndNUnit/bin/Debug/net5.0
-/UIFrameworkAndNUnit/.vs/UIFrameworkAndNUnit/v16
-/UIFrameworkAndNUnit/.vs/UIFrameworkAndNUnit/DesignTimeBuild/.dtbcache.v2
+*.dll
+/ref
+*.pdb
+.vs
+obj
+bin
