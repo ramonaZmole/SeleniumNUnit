@@ -46,19 +46,4 @@ public class LoginTests : BaseTest
             yield return new object[] { row };
         }
     }
-
-
-    //private IEnumerable<int[]> GetTestData()
-    //{
-    //    using (var csv = new CsvReader(new StreamReader("test-data.csv"), true))
-    //    {
-    //        while (csv.ReadNextRecord())
-    //        {
-    //            int data1 = int.Parse(csv[0]);
-    //            int data2 = int.Parse(csv[1]);
-    //            int expectedOutput = int.Parse(csv[2]);
-    //            yield return new[] { data1, data2, expectedOutput };
-    //        }
-    //    }
-    //}
 }
