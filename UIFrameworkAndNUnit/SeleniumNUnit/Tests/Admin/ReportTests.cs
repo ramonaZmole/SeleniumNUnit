@@ -1,7 +1,6 @@
-﻿using RestSharp;
-using SeleniumNUnit.Helpers;
-using SeleniumNUnit.Helpers.Models;
+﻿using SeleniumNUnit.Helpers;
 using SeleniumNUnit.Helpers.Models.ApiModels;
+using SeleniumNUnit.Helpers.Models.Enum;
 
 namespace SeleniumNUnit.Tests.Admin;
 
@@ -15,6 +14,7 @@ public class ReportTests : BaseTest
     public override void Before()
     {
         base.Before();
+
         _createRoomOutput = Client.CreateRoom();
 
         _bookingInput = new CreateBookingInput
@@ -41,6 +41,7 @@ public class ReportTests : BaseTest
     public override void After()
     {
         base.After();
-        var t = Client.CreateRequest($"{ApiResource.Room}{_createRoomOutput.roomid}", Method.DELETE);
+
+        Client.DeleteRoom(_createRoomOutput.roomid);
     }
 }

@@ -1,22 +1,20 @@
-﻿using RestSharp;
-using SeleniumNUnit.Helpers;
+﻿using SeleniumNUnit.Helpers;
 using SeleniumNUnit.Helpers.Models;
 using SeleniumNUnit.Helpers.Models.ApiModels;
-
 
 namespace SeleniumNUnit.Tests.Book;
 
 [TestFixture]
 public class BookingTests : BaseTest
 {
-    private CreateRoomOutput _createRoomResponse;
+    private CreateRoomOutput _createRoomOutput;
 
     [SetUp]
     public override void Before()
     {
         base.Before();
 
-        _createRoomResponse = Client.CreateRoom();
+        _createRoomOutput = Client.CreateRoom();
     }
 
     [Test]
@@ -24,10 +22,10 @@ public class BookingTests : BaseTest
     {
         Browser.GoTo(Constants.Url);
 
-        Pages.HomePage.BookThisRoom(_createRoomResponse.description);
-        Pages.HomePage.InsertBookingDetails(new User());
-        Pages.HomePage.BookRoom();
-        Pages.HomePage.IsSuccessMessageDisplayed().Should().BeTrue();
+        Pages.Homepage.BookThisRoom(_createRoomOutput.description);
+        Pages.Homepage.InsertBookingDetails(new User());
+        Pages.Homepage.BookRoom();
+        Pages.Homepage.IsSuccessMessageDisplayed().Should().BeTrue();
     }
 
     [Test]
@@ -35,17 +33,18 @@ public class BookingTests : BaseTest
     {
         Browser.GoTo(Constants.Url);
 
-        Pages.HomePage.BookThisRoom(_createRoomResponse.description);
-        Pages.HomePage.InsertBookingDetails(new User());
-        Pages.HomePage.CancelBooking();
-        Pages.HomePage.IsBookingFormDisplayed().Should().BeFalse();
-        Pages.HomePage.IsCalendarDisplayed().Should().BeFalse();
+        Pages.Homepage.BookThisRoom(_createRoomOutput.description);
+        Pages.Homepage.InsertBookingDetails(new User());
+        Pages.Homepage.CancelBooking();
+        Pages.Homepage.IsBookingFormDisplayed().Should().BeFalse();
+        Pages.Homepage.IsCalendarDisplayed().Should().BeFalse();
     }
 
     [TearDown]
     public override void After()
     {
         base.After();
-        Client.CreateRequest($"{ApiResource.Room}{_createRoomResponse.roomid}", Method.DELETE);
+
+        Client.DeleteRoom(_createRoomOutput.roomid);
     }
 }

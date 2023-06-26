@@ -8,7 +8,6 @@ namespace SeleniumNUnit.Helpers;
 
 public class BaseTest
 {
-    public TestContext TestContext { get; set; }
     public readonly RestClient Client = RequestHelper.GetRestClient(Constants.Url);
 
     [SetUp]
@@ -20,6 +19,7 @@ public class BaseTest
             IsHeadless = true,
             ChromeDriverPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
         });
+        Browser.WebDriver.Manage().Window.Maximize();
     }
 
     [TearDown]
@@ -27,9 +27,10 @@ public class BaseTest
     {
         if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
         {
-            var path = ScreenShot.GetScreenShotPath(TestContext.CurrentContext.Test.MethodName);
-            TestContext.AddTestAttachment(path);
+            var imagePath = ScreenShot.GetScreenShotPath(TestContext.CurrentContext.Test.MethodName);
+            TestContext.AddTestAttachment(imagePath);
         }
+
         Browser.Cleanup();
     }
 
