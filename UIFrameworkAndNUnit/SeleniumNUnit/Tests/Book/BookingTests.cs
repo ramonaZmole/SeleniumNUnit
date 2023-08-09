@@ -38,6 +38,9 @@ public class BookingTests : BaseTest
         Pages.Homepage.CancelBooking();
         Pages.Homepage.IsBookingFormDisplayed().Should().BeFalse();
         Pages.Homepage.IsCalendarDisplayed().Should().BeFalse();
+
+        ///Pages.Homepage.IsCalendarDisplayed
+        Assert.That(Pages.Homepage.GetErrorMessages()[0], Is.EqualTo(""));
     }
 
     [TearDown]
