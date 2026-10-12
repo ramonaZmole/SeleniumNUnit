@@ -8,7 +8,7 @@ public class Homepage : CalendarPage
 {
     #region Selectors
 
-    private readonly By _descriptions = By.CssSelector(".row.hotel-room-info p");
+    private readonly By _descriptions = By.CssSelector("h5.card-title~p");
 
     private readonly By _firstNameInput = By.CssSelector(".room-firstname");
     private readonly By _lastNameInput = By.CssSelector(".room-lastname");
@@ -20,14 +20,14 @@ public class Homepage : CalendarPage
     private readonly By _calendar = By.CssSelector(".rbc-calendar");
 
     private readonly By _successMessage = By.CssSelector(".col-sm-6.text-center > h3");
-    private readonly By _bookRoomButtons = By.CssSelector(".openBooking");
+    private readonly By _bookRoomButtons = By.CssSelector("col-md-6.col-lg-4 .btn.btn-primary");
 
     private readonly By _nameInput = By.CssSelector("#name");
     private readonly By _contactEmailInput = By.CssSelector("#email");
     private readonly By _contactPhoneInput = By.CssSelector("#phone");
     private readonly By _subjectInput = By.CssSelector("#subject");
     private readonly By _messageInput = By.CssSelector("#description");
-    private readonly By _submitContactButton = By.CssSelector("#submitContact");
+    private readonly By _submitContactButton = By.CssSelector(".d-grid > button:only-child");
 
     #endregion
 
@@ -78,6 +78,8 @@ public class Homepage : CalendarPage
         _contactPhoneInput.ActionSendKeys(formData.Phone);
         _subjectInput.ActionSendKeys(formData.Subject);
         _messageInput.ActionSendKeys(formData.Message);
+
+        PageHelpers.ScrollDownToView(1000);
 
         _submitContactButton.ActionClick();
     }

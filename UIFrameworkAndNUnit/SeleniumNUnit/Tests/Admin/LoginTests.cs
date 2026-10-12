@@ -19,7 +19,7 @@ public class LoginTests : BaseTest
 
         Pages.LoginPage.Login(username, password);
 
-        Pages.AdminHeaderPage.IsLogoutButtonDisplayed().Should().Be(isLoggedIn);
+        Pages.AdminHeaderPage.IsAdminMenuDisplayed().Should().Be(isLoggedIn);
     }
 
     [TestCaseSource(nameof(GetLoginScenarios))]
@@ -30,7 +30,7 @@ public class LoginTests : BaseTest
 
         Pages.LoginPage.Login(loginData.Username, loginData.Password);
 
-        Pages.AdminHeaderPage.IsLogoutButtonDisplayed().Should().Be(loginData.IsLoggedIn);
+        Pages.AdminHeaderPage.IsAdminMenuDisplayed().Should().Be(loginData.IsLoggedIn);
     }
 
     private static IEnumerable<object[]> GetLoginScenarios()

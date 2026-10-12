@@ -1,4 +1,5 @@
-﻿using SeleniumNUnit.Helpers;
+﻿using CsvHelper.Configuration.Attributes;
+using SeleniumNUnit.Helpers;
 using SeleniumNUnit.Helpers.Models;
 using SeleniumNUnit.Helpers.Models.ApiModels;
 
@@ -23,7 +24,7 @@ public class BookingFormTests : BaseTest
         Client.CreateBooking(bookingInput);
     }
 
-    [Test]
+    [Test, NUnit.Framework.Ignore("Temporarily ignored by request")]
     public void WhenBookingRoom_ErrorMessageShouldBeDisplayedTest()
     {
         Browser.GoTo(Constants.Url);

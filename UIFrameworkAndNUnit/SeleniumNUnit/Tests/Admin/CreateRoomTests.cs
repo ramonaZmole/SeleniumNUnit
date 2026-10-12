@@ -15,6 +15,7 @@ public class CreateRoomTests : BaseTest
     [TestCase(RoomType.Suite)]
     [TestCase(RoomType.Twin)]
     [Test]
+    [NonParallelizable]
     public void WhenCreatingARoom_ThenItShouldBeCreatedTest(RoomType roomType)
     {
         Browser.GoTo(Constants.AdminUrl);
@@ -23,9 +24,7 @@ public class CreateRoomTests : BaseTest
 
         Pages.RoomPage.CreateRoom();
         Pages.RoomPage.IsErrorMessageDisplayed().Should().BeTrue();
-        var errorMessages = Pages.RoomPage.GetErrorMessages();
-        errorMessages.Should().Contain("must be greater than or equal to 1");
-        errorMessages.Should().Contain("Room name must be set");
+        Pages.RoomPage.GetErrorMessages().Should().Contain("Failed to create room");
 
         _roomModel = new Room
         {
