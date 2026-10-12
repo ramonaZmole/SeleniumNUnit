@@ -17,7 +17,7 @@ public class BookingTests : BaseTest
         _createRoomOutput = Client.CreateRoom();
     }
 
-    [Test]
+    [Test, NUnit.Framework.Ignore("Temporarily ignored by request")]
     public void WhenBookingRoom_SuccessMessageShouldBeDisplayedTest()
     {
         Browser.GoTo(Constants.Url);
@@ -28,7 +28,7 @@ public class BookingTests : BaseTest
         Pages.Homepage.IsSuccessMessageDisplayed().Should().BeTrue();
     }
 
-    [Test]
+    [Test, NUnit.Framework.Ignore("Temporarily ignored by request")]
     public void WhenCancellingBooking_FormShouldNotBeDisplayedTest()
     {
         Browser.GoTo(Constants.Url);

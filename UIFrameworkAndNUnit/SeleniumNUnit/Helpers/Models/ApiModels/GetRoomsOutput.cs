@@ -3,7 +3,7 @@
 public class Room
 {
     public int roomid { get; set; }
-    public int roomName { get; set; }
+    public string roomName { get; set; }
     public string type { get; set; }
     public bool accessible { get; set; }
     public string image { get; set; }

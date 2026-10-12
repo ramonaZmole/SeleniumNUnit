@@ -9,13 +9,37 @@ public static class ApiHelpers
     public static string GetLoginToken(this RestClient client)
     {
         var output = client.CreateRequest(ApiResource.Login, new LoginInput(), Method.POST);
-        return output.Cookies[0].Value;
+        if (string.IsNullOrEmpty(output?.Content)) return string.Empty;
+
+        var content = Newtonsoft.Json.Linq.JObject.Parse(output.Content);
+
+        return (string?)content["token"];
     }
 
     public static CreateRoomOutput CreateRoom(this RestClient client)
     {
-        var roomResponse = client.CreateRequest(ApiResource.Room, new CreateRoomInput(), Method.POST);
-        return JsonConvert.DeserializeObject<CreateRoomOutput>(roomResponse.Content);
+        var input = new CreateRoomInput();
+
+        var createRoomResponse = client.CreateRequest(ApiResource.Room, input, Method.POST);
+
+        var rooms = client.GetRooms();
+        var created = rooms?.rooms?
+            .FirstOrDefault(r => !string.IsNullOrEmpty(r.description)
+            && r.description.Contains(input.description));
+
+        var createRoomOutput = new CreateRoomOutput
+        {
+            success = createRoomResponse?.Content ?? string.Empty
+        };
+
+        if (created is not null)
+        {
+            createRoomOutput.roomid = created.roomid;
+            createRoomOutput.roomName = created.roomName;
+            createRoomOutput.description = created.description;
+        }
+
+        return createRoomOutput;
     }
 
     public static void CreateBooking(this RestClient client, CreateBookingInput createBookingInput)
@@ -28,10 +52,12 @@ public static class ApiHelpers
     public static void DeleteRoom(this RestClient client, string roomName)
     {
         var roomsList = client.GetRooms();
-        if (roomsList == null) return;
+        if (roomsList?.rooms == null) return;
 
-        var roomId = roomsList.rooms.First(x => x.roomName == int.Parse(roomName)).roomid;
-        client.CreateRequest($"{ApiResource.Room}{roomId}", Method.DELETE);
+        var room = roomsList.rooms.FirstOrDefault(x => x.roomName == roomName);
+        if (room == null) return;
+
+        client.CreateRequest($"{ApiResource.Room}{room.roomid}", Method.DELETE);
     }
 
     public static void DeleteRoom(this RestClient client, int roomId)

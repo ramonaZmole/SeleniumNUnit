@@ -15,7 +15,7 @@ public class RoomsPage : BasePage
     private readonly By _roomPriceInput = By.CssSelector("#roomPrice");
     private readonly By _roomDetailsLabels = By.CssSelector(".form-check-label");
 
-    private readonly By _lastRoomDetails = By.CssSelector("#root > div:nth-child(2) div:nth-last-child(2) .row.detail div");
+    private readonly By _lastRoomDetails = By.CssSelector("div:nth-last-child(2) > .row.detail div");
 
     #endregion
 
@@ -37,6 +37,8 @@ public class RoomsPage : BasePage
 
     public Room GetLastRoomDetails()
     {
+        WaitHelpers.ExplicitWait();
+
         var roomDetails = _lastRoomDetails.GetElements();
 
         return new Room
@@ -45,7 +47,7 @@ public class RoomsPage : BasePage
             Type = roomDetails[1].Text,
             Accessible = roomDetails[2].Text,
             Price = roomDetails[3].Text,
-            RoomDetails = roomDetails[4].Text
+            RoomDetails = roomDetails.Count > 4 ? roomDetails[4].Text : "No features added to the room"
         };
     }
 }

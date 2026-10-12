@@ -8,11 +8,12 @@ public class CalendarPage : BasePage
 {
     public void SelectDates()
     {
+        WaitHelpers.WaitForDocumentReadyState();
         var actions = new Actions(Browser.WebDriver);
 
-        actions.ClickAndHold(Browser.WebDriver.FindElement(By.XPath($"//*[text()={Constants.BookingStartDay}] ")))
+        actions.ClickAndHold(Browser.WebDriver.FindElement(By.XPath($"(//div[contains(@class, 'rbc-date-cell') and .//button/text()='{Constants.BookingStartDay}'])")))
             .MoveByOffset(10, 10)
-            .Release(Browser.WebDriver.FindElement(By.XPath($"//*[text()={Constants.BookingEndDay}] ")))
+            .Release(Browser.WebDriver.FindElement(By.XPath($"(//div[contains(@class, 'rbc-date-cell') and .//button/text()='{Constants.BookingEndDay}'])")))
             .Build()
             .Perform();
     }

@@ -19,7 +19,7 @@ namespace SeleniumNUnit.Helpers {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class ApiResource {
@@ -61,7 +61,7 @@ namespace SeleniumNUnit.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /booking/.
+        ///   Looks up a localized string similar to /api/booking/.
         /// </summary>
         internal static string Booking {
             get {
@@ -70,7 +70,7 @@ namespace SeleniumNUnit.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /auth/login.
+        ///   Looks up a localized string similar to /api/auth/login.
         /// </summary>
         internal static string Login {
             get {
@@ -79,7 +79,7 @@ namespace SeleniumNUnit.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /room/.
+        ///   Looks up a localized string similar to /api/room/.
         /// </summary>
         internal static string Room {
             get {
