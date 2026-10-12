@@ -15,6 +15,7 @@ public class CreateRoomTests : BaseTest
     [TestCase(RoomType.Suite)]
     [TestCase(RoomType.Twin)]
     [Test]
+    [NonParallelizable]
     public void WhenCreatingARoom_ThenItShouldBeCreatedTest(RoomType roomType)
     {
         Browser.GoTo(Constants.AdminUrl);
